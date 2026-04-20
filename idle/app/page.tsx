@@ -4,7 +4,7 @@ import React, {useEffect, useState} from "react";
 import { Upgrades } from "./upgrades";
 import { Money } from "./money";
 
-export default function main(){
+export default function Main(){
   const [dinheiro, setDinheiro] = useState(0);
   const [upgrade, setUpgrade] = useState({
     Fãs: {level: 0, custo: 10},
