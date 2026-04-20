@@ -1,0 +1,25 @@
+name: CI - Integracao Continua
+
+# O workflow vai rodar sempre que uma Pull Request for aberta para a main
+on:
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  verificacao-qualidade:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar o repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar o Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18' # Versão padrão segura para o Next.js
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Rodar Linter (Verificação de código)
+        run: npm run lint
