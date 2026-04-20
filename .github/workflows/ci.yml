@@ -19,7 +19,7 @@ jobs:
           node-version: '18' # Versão padrão segura para o Next.js
 
       - name: Instalar dependências
-        run: npm ci
+        run: npm install
 
       - name: Rodar Linter (Verificação de código)
         run: npm run lint

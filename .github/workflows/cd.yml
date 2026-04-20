@@ -1,0 +1,30 @@
+name: CD - Entrega Continua
+
+on:
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-e-entrega:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar o repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar o Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Realizar o Build (Prepara para produção)
+        run: npm run build
+
+      - name: Salvar Artefato de Entrega
+        uses: actions/upload-artifact@v4
+        with:
+          name: nextjs-build-artifact
+          path: .next/
