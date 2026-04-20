@@ -9,6 +9,10 @@ jobs:
   verificacao-qualidade:
     runs-on: ubuntu-latest
 
+    defaults:
+          run:
+            working-directory: ./idle
+
     steps:
       - name: Clonar o repositório
         uses: actions/checkout@v4
@@ -16,10 +20,10 @@ jobs:
       - name: Configurar o Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18' # Versão padrão segura para o Next.js
+          node-version: '20' # Versão padrão segura para o Next.js
 
       - name: Instalar dependências
-        run: npm ci
+        run: npm install
 
       - name: Rodar Linter (Verificação de código)
         run: npm run lint
