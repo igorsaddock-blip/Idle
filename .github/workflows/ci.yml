@@ -20,7 +20,7 @@ jobs:
       - name: Configurar o Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18' # Versão padrão segura para o Next.js
+          node-version: '20' # Versão padrão segura para o Next.js
 
       - name: Instalar dependências
         run: npm install
