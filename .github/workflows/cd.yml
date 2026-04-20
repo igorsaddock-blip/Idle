@@ -8,6 +8,11 @@ jobs:
   build-e-entrega:
     runs-on: ubuntu-latest
 
+    defaults:
+          run:
+            working-directory: ./idle
+
+
     steps:
       - name: Clonar o repositório
         uses: actions/checkout@v4
