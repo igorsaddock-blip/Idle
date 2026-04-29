@@ -1,0 +1,22 @@
+name: Alertas do Discord
+
+# O gatilho: roda sempre que houver novos commits/merges na main
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  enviar-notificacao:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Disparar Webhook para o Discord
+        # Puxamos o segredo do "cofre" e colocamos como variável de ambiente
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          curl -H "Content-Type: application/json" \
+          -d '{"content": "🚨 **Atenção Equipe:** Um novo commit ou merge acabou de ser aprovado e enviado para a branch `main` do nosso Idle Game! 🚀"}' \
+          $DISCORD_WEBHOOK
